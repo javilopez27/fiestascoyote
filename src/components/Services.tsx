@@ -5,34 +5,63 @@ const CORDON = "https://i.imgur.com/JNH46k3.jpeg"; // <- reemplaza
 
 // SVG Icon Components
 const IconAnimacion = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.624L16.5 21.75l-.398-1.126a3.375 3.375 0 00-2.455-2.456L12.75 18l1.126-.398a3.375 3.375 0 002.455-2.456L16.5 14.25l.398 1.126a3.375 3.375 0 002.456 2.456L20.25 18l-1.126.398a3.375 3.375 0 00-2.456 2.456z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
 );
 const IconTalleres = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043-.025a15.998 15.998 0 01-3.388-1.621m-4.904 9.098a15.998 15.998 0 01-1.622-3.385m5.043.025a15.998 15.998 0 00-3.388-1.622m5.043.025a15.998 15.998 0 01-1.622 3.385m3.388-1.62a15.998 15.998 0 011.622 3.385m-5.043-.025a15.998 15.998 0 003.388 1.622m-5.043.025a15.998 15.998 0 013.388 1.621m0 0a2.25 2.25 0 003.771 1.649 2.25 2.25 0 00-1.649-3.771M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 5.25a3 3 0 013 3v10.5a3 3 0 01-3 3h-4.5a3 3 0 01-3-3V8.25a3 3 0 013-3h4.5z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v.75M15 3v.75M12 21.75V21" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 9.75H18.75" />
+  </svg>
 );
 const IconTartas = () => (
- <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A3.75 3.75 0 006 8.625v11.25m8.25-15.188a3.75 3.75 0 016 0v11.25m-12-8.25h12" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.5v3.75c0 1.027.845 1.99 1.976 2.084 1.327.11 2.669.166 4.024.166m0 0c1.355 0 2.697-.056 4.024-.166C17.155 16.24 18 15.277 18 14.25v-3.75c0-1.027-.845-1.99-1.976-2.084A48.421 48.421 0 0012 8.25zm0 0V6" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 18.75c.383.567.801 1.082 1.272 1.536M14.25 18.75c-.383.567-.801 1.082-1.272 1.536" />
+  </svg>
 );
 const IconDecoracion = () => (
- <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688 0-1.25-.562-1.25-1.25s.562-1.25 1.25-1.25h3.32c.688 0 1.25.562 1.25 1.25s-.562 1.25-1.25 1.25h-3.32zM12 4.5c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5 7.5-3.358 7.5-7.5-3.358-7.5-7.5-7.5z" transform="rotate(-45 12 12)" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.364 4.636l1.06 1.06M20.485 9.757l-1.06 1.06M4.636 15.364l1.06 1.06M9.757 20.485l-1.06 1.06" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955a.75.75 0 011.06 0l8.955 8.955M3 10.5v.75a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 11.25v-.75M4.5 18V9.75" />
+  </svg>
 );
 const IconMerienda = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25a1.5 1.5 0 01.36-1.003L7.5 4.5l1.64 1.64m6.36 0L20.64 10.247a1.5 1.5 0 01.36 1.003M7.5 4.5L6.36 3.36a1.5 1.5 0 00-2.12 0L3.36 4.24a1.5 1.5 0 000 2.12l1.14 1.14" /><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 7.5L12 3 7.5 7.5" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5h3m-6.75 0h10.5c.621 0 1.125-.504 1.125-1.125v-7.5c0-.621-.504-1.125-1.125-1.125H7.125c-.621 0-1.125.504-1.125 1.125v7.5c0 .621.504 1.125 1.125 1.125z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75V4.875c0-.621-.504-1.125-1.125-1.125h-6.75c-.621 0-1.125.504-1.125 1.125v4.875" />
+  </svg>
 );
 const IconPinatas = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013-3.832A8.983 8.983 0 0115.362 5.214z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75c-2.625 0-4.75-2.09-4.75-4.688 0-2.206 1.343-3.312 3-4.687a1.5 1.5 0 012.5 0c1.657 1.375 3 2.48 3 4.687C16.75 16.66 14.625 18.75 12 18.75z" />
+  </svg>
 );
 const IconInvitacion = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.868-9.455L12 5.25 2.25 9" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 9l4.5 2.406a2.25 2.25 0 002.5 0l4.5-2.406m5.633-3.188L12 2.25 2.25 6.367m19.5.001L12 2.25 2.25 6.367m19.5 3.536L12 14.25 2.25 9.906" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+  </svg>
 );
 const IconPiscinaBolas = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="3.5" /><circle cx="6.5" cy="17.5" r="2.5" /><circle cx="17.5" cy="17.5" r="2.5" /><circle cx="17.5" cy="6.5" r="2.5" /><circle cx="6.5" cy="6.5" r="2.5" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <rect width="7" height="7" x="14" y="14" rx="1" />
+      <rect width="7" height="7" x="3" y="14" rx="1" />
+      <rect width="7" height="7" x="14" y="3" rx="1" />
+      <rect width="7" height="7" x="3" y="3" rx="1" />
+  </svg>
 );
 const IconMago = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5M4.5 12.75v3.75a3 3 0 003 3h6a3 3 0 003-3v-3.75M5.25 9.75h13.5" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+  </svg>
 );
 const IconFotografo = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.776 48.776 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008v-.008z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#ff6b35]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
 );
 
 const servicesList = [
