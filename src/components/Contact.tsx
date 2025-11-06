@@ -10,7 +10,9 @@ interface FormData {
   website?: string; // honeypot
 }
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/movpgrvb"; // ← reemplaza con tu endpoint
+// Web3Forms
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "59c08429-d3a6-4662-aed4-d9aa22ee5e01"; // ← pon aquí tu clave
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -20,7 +22,7 @@ const Contact: React.FC = () => {
     kidsCount: '10',
     eventDate: '',
     details: '',
-    website: '', // honeypot
+    website: '',
   });
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -33,27 +35,32 @@ const Contact: React.FC = () => {
     e.preventDefault();
 
     // Honeypot
-    if (formData.website && formData.website.trim() !== '') return;
+    if (formData.website?.trim()) return;
 
-    const { name, email, kidsAge, kidsCount, eventDate, details } = formData;
-    const formattedDate = eventDate
-      ? new Date(eventDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+    const formattedDate = formData.eventDate
+      ? new Date(formData.eventDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
       : 'No especificada';
 
+    // Payload Web3Forms
     const payload = {
-      name,
-      email,
-      kidsAge,
-      kidsCount,
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Solicitud de información para fiesta infantil - ${formData.name}`,
+      from_name: formData.name,
+      replyto: formData.email,
+      name: formData.name,
+      email: formData.email,
+      kidsAge: formData.kidsAge,
+      kidsCount: formData.kidsCount,
       eventDate: formattedDate,
-      details,
-      _subject: `Solicitud de información para fiesta infantil - ${name}`,
-      _replyto: email,
+      details: formData.details,
+      // opcionales:
+      // redirect: "https://tu-dominio/thanks",
+      // from_email: "[email protected]" // si quieres forzar remitente
     };
 
     try {
       setSubmitting(true);
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(WEB3FORMS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(payload),
