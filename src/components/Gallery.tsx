@@ -10,6 +10,12 @@ const images: string[] = [
   "https://i.imgur.com/MGoQU14.jpeg",
   "https://i.imgur.com/GI7ZcOL.jpeg",
   "https://i.imgur.com/pxfnHus.jpeg",
+  "https://i.imgur.com/BcYMQkC.jpeg",
+  "https://i.imgur.com/dQ2KLpt.jpeg",
+  "https://i.imgur.com/gT9OyJm.jpeg",
+  "https://i.imgur.com/390c0ya.jpeg",
+  "https://i.imgur.com/vGrpjq0.jpeg",
+  "https://i.imgur.com/ilSTzfG.jpeg",
 ];
 
 const Gallery: React.FC = () => {
