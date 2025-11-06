@@ -1,88 +1,81 @@
-
 import React, { useState } from 'react';
-import { getBudgetEstimate } from '../services/geminiService';
-
-const cakeOptions = [
-  'Tarta de chuches',
-  'Tarta de chuches personalizable',
-  'Tarta 3 chocolates',
-  'Tarta de limón y merengue',
-  'Mus choco y lacasitas',
-  'Queso con frambuesa',
-  'Zanahoria',
-  'Manzana',
-  'Banoffe',
-];
-
-const workshopOptions = [
-  'Personaliza tu objeto',
-  'Personaliza tu totebag',
-  'Pinta Camisetas',
-  'Taller tarta de chuches',
-];
-
 
 interface FormData {
   name: string;
   email: string;
-  phone: string;
-  eventDate: string;
+  kidsAge: string;
   kidsCount: string;
+  eventDate: string;
   details: string;
-  selectedCakes: string[];
-  selectedWorkshops: string[];
+  website?: string; // honeypot
 }
 
-interface Estimation {
-    explanation: string;
-    estimatedCost: string;
-}
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/movpgrvb"; // ← reemplaza con tu endpoint
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    phone: '',
-    eventDate: '',
+    kidsAge: '',
     kidsCount: '10',
+    eventDate: '',
     details: '',
-    selectedCakes: [],
-    selectedWorkshops: [],
+    website: '', // honeypot
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [estimation, setEstimation] = useState<Estimation | null>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
-    setFormData(prevData => {
-        const currentSelection = prevData[name as keyof FormData] as string[];
-        if (checked) {
-            return { ...prevData, [name]: [...currentSelection, value] };
-        } else {
-            return { ...prevData, [name]: currentSelection.filter(item => item !== value) };
-        }
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setEstimation(null);
+
+    // Honeypot
+    if (formData.website && formData.website.trim() !== '') return;
+
+    const { name, email, kidsAge, kidsCount, eventDate, details } = formData;
+    const formattedDate = eventDate
+      ? new Date(eventDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+      : 'No especificada';
+
+    const payload = {
+      name,
+      email,
+      kidsAge,
+      kidsCount,
+      eventDate: formattedDate,
+      details,
+      _subject: `Solicitud de información para fiesta infantil - ${name}`,
+      _replyto: email,
+    };
 
     try {
-      const result = await getBudgetEstimate(formData);
-      setEstimation(result);
+      setSubmitting(true);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Error enviando el formulario");
+
+      setShowSuccessPopup(true);
+      setFormData({
+        name: '',
+        email: '',
+        kidsAge: '',
+        kidsCount: '10',
+        eventDate: '',
+        details: '',
+        website: '',
+      });
     } catch (err) {
-      setError('Lo sentimos, ha ocurrido un error al calcular el presupuesto. Por favor, inténtalo de nuevo.');
+      alert("No se pudo enviar el formulario. Inténtalo más tarde.");
       console.error(err);
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
 
@@ -94,60 +87,150 @@ const Contact: React.FC = () => {
           <p className="text-lg text-gray-600 mt-2">Cuéntanos tu idea y te ayudamos a hacerla realidad.</p>
           <div className="w-24 h-1 bg-[#ff6b35] mx-auto mt-4"></div>
         </div>
+
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="bg-gray-50 p-8 rounded-lg shadow-lg space-y-6">
+            {/* Honeypot (oculto) */}
+            <input
+              type="text"
+              name="website"
+              value={formData.website}
+              onChange={handleChange}
+              className="hidden"
+              autoComplete="off"
+              tabIndex={-1}
+            />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" name="name" placeholder="Nombre" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.name} onChange={handleChange} />
-              <input type="email" name="email" placeholder="Email" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.email} onChange={handleChange} />
-              <input type="tel" name="phone" placeholder="Teléfono" className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.phone} onChange={handleChange} />
-              <input type="date" name="eventDate" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.eventDate} onChange={handleChange} />
-              <input type="number" name="kidsCount" min="1" placeholder="Nº de niños" required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.kidsCount} onChange={handleChange} />
-            </div>
-            
-            <div className="space-y-3">
-              <label className="font-semibold text-gray-700">Tartas Personalizadas (opcional)</label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
-                {cakeOptions.map(cake => (
-                  <label key={cake} className="flex items-center space-x-2 text-sm text-gray-600 font-medium">
-                    <input type="checkbox" name="selectedCakes" value={cake} checked={formData.selectedCakes.includes(cake)} onChange={handleCheckboxChange} className="rounded text-[#ff6b35] focus:ring-[#ff6b35] transition" />
-                    <span>{cake}</span>
-                  </label>
-                ))}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Tu Nombre</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="Nombre completo"
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Tu Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="ejemplo@correo.com"
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="kidsAge" className="block text-sm font-medium text-gray-700 mb-2">Edad de los niños</label>
+                <input
+                  id="kidsAge"
+                  type="text"
+                  name="kidsAge"
+                  placeholder="Ej: 5-7 años"
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                  value={formData.kidsAge}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="kidsCount" className="block text-sm font-medium text-gray-700 mb-2">Número de niños (aprox.)</label>
+                <input
+                  id="kidsCount"
+                  type="number"
+                  name="kidsCount"
+                  min="1"
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                  value={formData.kidsCount}
+                  onChange={handleChange}
+                />
               </div>
             </div>
 
-            <div className="space-y-3">
-              <label className="font-semibold text-gray-700">Talleres Creativos (opcional)</label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
-                {workshopOptions.map(workshop => (
-                  <label key={workshop} className="flex items-center space-x-2 text-sm text-gray-600 font-medium">
-                    <input type="checkbox" name="selectedWorkshops" value={workshop} checked={formData.selectedWorkshops.includes(workshop)} onChange={handleCheckboxChange} className="rounded text-[#ff6b35] focus:ring-[#ff6b35] transition" />
-                    <span>{workshop}</span>
-                  </label>
-                ))}
-              </div>
+            <div>
+              <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700 mb-2">Fecha deseada del evento</label>
+              <input
+                type="date"
+                name="eventDate"
+                id="eventDate"
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                value={formData.eventDate}
+                onChange={handleChange}
+                min={new Date().toISOString().split('T')[0]}
+              />
             </div>
 
-            <textarea name="details" placeholder="Cuéntanos más sobre el evento, otros servicios que te interesan, etc." rows={5} required className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]" value={formData.details} onChange={handleChange}></textarea>
-            
+            <div>
+              <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-2">Cuéntanos más sobre la fiesta que imaginas</label>
+              <textarea
+                id="details"
+                name="details"
+                placeholder="Temática, lugar, servicios de interés, etc."
+                rows={5}
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                value={formData.details}
+                onChange={handleChange}
+              />
+            </div>
+
             <div className="text-center">
-              <button type="submit" disabled={loading} className="bg-[#ff6b35] text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300 disabled:bg-gray-400">
-                {loading ? 'Calculando...' : 'Calcular Presupuesto Estimado'}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="bg-[#ff6b35] text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300 disabled:opacity-60"
+              >
+                {submitting ? "Enviando..." : "Enviar Solicitud"}
               </button>
             </div>
           </form>
 
-          {error && <div className="mt-6 p-4 bg-red-100 text-red-700 rounded-md text-center">{error}</div>}
-          
-          {estimation && (
-            <div className="mt-8 p-6 bg-orange-50 border-l-4 border-[#ff6b35] rounded-r-lg">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Presupuesto Estimado</h3>
-              <p className="text-gray-700 mb-4 whitespace-pre-wrap">{estimation.explanation}</p>
-              <p className="text-3xl font-bold text-[#ff6b35]">{estimation.estimatedCost}</p>
+          {showSuccessPopup && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]"
+              onClick={() => setShowSuccessPopup(false)}
+            >
+              <div
+                className="bg-white p-8 rounded-lg shadow-xl text-center animate-fade-in"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">¡Solicitud enviada!</h3>
+                <p className="text-gray-600 mb-6">
+                  Gracias por tu mensaje. Nos pondremos en contacto contigo a la mayor brevedad.
+                </p>
+                <button
+                  onClick={() => setShowSuccessPopup(false)}
+                  className="bg-[#ff6b35] text-white font-bold py-2 px-6 rounded-full hover:bg-orange-600 transition duration-300"
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
           )}
         </div>
       </div>
+
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };

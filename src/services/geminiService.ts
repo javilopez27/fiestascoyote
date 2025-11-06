@@ -26,7 +26,7 @@ const PRICES = {
     'Tarta de chuches personalizable': 50, // Base price
     'Tarta 3 chocolates': 50,
     'Tarta de limón y merengue': 50,
-    'Mus choco y lacasitas': 54,
+    'Mousse choco y lacasitas': 54,
     'Queso con frambuesa': 50,
     'Zanahoria': 50,
     'Manzana': 50,
@@ -75,7 +75,7 @@ export const getBudgetEstimate = async (formData: FormData): Promise<Estimation>
   }
   if (detailsText.includes('decoración') || detailsText.includes('decoracion')) {
      totalCost += PRICES.DECORACION;
-     breakdown.push(`- Decoración Mágica (desde): ${PRICES.DECORACION}€`);
+     breakdown.push(`- Decoración Personalizada (desde): ${PRICES.DECORACION}€`);
   }
   if (detailsText.includes('mago')) {
      totalCost += PRICES.MAGO;
@@ -100,13 +100,11 @@ export const getBudgetEstimate = async (formData: FormData): Promise<Estimation>
     };
   }
 
+  // 5. Construct the final explanation text
   const explanationHeader = "Aquí tienes un desglose de tu presupuesto estimado:\n\n";
-const breakdownText = breakdown.join('\n');
-const footerText =
-  "\n\n*Importante:* Esta estimación **no incluye los monitores** ni las **horas correspondientes pendientes de confirmar**. " +
-  "Por tanto, **no es el precio final**; nuestro equipo te confirmará el importe definitivo.";
-const explanation = explanationHeader + breakdownText + footerText;
-
+  const breakdownText = breakdown.join('\n');
+  const footerText = "\n\n*Este presupuesto es una estimación. El precio final será confirmado por nuestro equipo para asegurar que todo sea perfecto.";
+  const explanation = explanationHeader + breakdownText + footerText;
   
   const estimatedCost = `${totalCost} €*`;
 

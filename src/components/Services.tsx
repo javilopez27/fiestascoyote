@@ -42,10 +42,10 @@ const servicesList = [
     title: 'Talleres Creativos',
     description: 'Pintacamisetas, totebags, tarta de chuches, y más.',
     details: [
-      { img: 'https://i.imgur.com/RCK35zn.png', title: 'Personaliza tu objeto',  price: '5€', unit: '/ niño' },
-      { img: 'https://i.imgur.com/iWUpFLB.jpeg', title: 'Personaliza tu totebag', price: '6€',     unit: '/ niño' },
-      { img: 'https://i.imgur.com/qAfC2CW.jpeg', title: 'Pinta Camisetas',        price: '6€',     unit: '/ niño' },
-      { img: 'https://i.imgur.com/PW0QpbZ.jpeg', title: 'Taller tarta de chuches', price: '8€',    unit: '/ niño' },
+      { img: 'https://i.imgur.com/RCK35zn.png', title: 'Personaliza tu objeto' },
+      { img: 'https://i.imgur.com/iWUpFLB.jpeg', title: 'Personaliza tu totebag' },
+      { img: 'https://i.imgur.com/qAfC2CW.jpeg', title: 'Pinta Camisetas' },
+      { img: 'https://i.imgur.com/PW0QpbZ.jpeg', title: 'Taller tarta de chuches' },
     ]
   },
   {
@@ -53,21 +53,21 @@ const servicesList = [
     title: 'Tartas Personalizadas',
     description: 'Deliciosas y temáticas para el momento más dulce.',
     details: [
-      { img: 'https://i.imgur.com/5ZuDbsZ.jpeg', title: 'Tarta de chuches',                      price: '50€' },
-      { img: 'https://i.imgur.com/YFn3dNS.jpeg', title: 'Tarta de chuches personalizable',       price: 'desde 50€' },
-      { img: 'https://i.imgur.com/fr8BXCT.jpeg', title: 'Tarta 3 chocolates', badge: CORDON,     price: '50€' },
-      { img: 'https://i.imgur.com/rkQmhPU.png',  title: 'Tarta de limón y merengue', badge: CORDON, price: '50€' },
-      { img: 'https://i.imgur.com/ODmgJOM.jpeg', title: 'Mus choco y lacasitas', badge: CORDON,  price: '54€' },
-      { img: 'https://i.imgur.com/LZxDb9x.jpeg', title: 'Queso con frambuesa',  badge: CORDON,   price: '50€' },
-      { img: 'https://i.imgur.com/SPpBNSo.jpeg', title: 'Zanahoria',            badge: CORDON,   price: '50€' },
-      { img: 'https://i.imgur.com/O4q2O5R.jpeg', title: 'Manzana',                               price: '50€' },
-      { img: 'https://i.imgur.com/1oAIvsK.jpeg', title: 'Banoffe',            badge: CORDON,     price: '50€' },
+      { img: 'https://i.imgur.com/5ZuDbsZ.jpeg', title: 'Tarta de chuches' },
+      { img: 'https://i.imgur.com/YFn3dNS.jpeg', title: 'Tarta de chuches personalizable' },
+      { img: 'https://i.imgur.com/fr8BXCT.jpeg', title: 'Tarta 3 chocolates', badge: CORDON },
+      { img: 'https://i.imgur.com/rkQmhPU.png',  title: 'Tarta de limón y merengue', badge: CORDON },
+      { img: 'https://i.imgur.com/ODmgJOM.jpeg', title: 'Mousse choco y lacasitas', badge: CORDON },
+      { img: 'https://i.imgur.com/LZxDb9x.jpeg', title: 'Queso con frambuesa',  badge: CORDON },
+      { img: 'https://i.imgur.com/SPpBNSo.jpeg', title: 'Zanahoria',            badge: CORDON },
+      { img: 'https://i.imgur.com/O4q2O5R.jpeg', title: 'Manzana' },
+      { img: 'https://i.imgur.com/1oAIvsK.jpeg', title: 'Banoffe',            badge: CORDON },
     ]
   },
-  { icon: <IconDecoracion />, title: 'Decoración Mágica', description: 'Transformamos cualquier espacio en un mundo de fantasía.' },
+  { icon: <IconDecoracion />, title: 'Decoración Personalizada', description: 'Transformamos cualquier espacio en un mundo de fantasía.' },
   { 
     icon: <IconMerienda />, 
-    title: 'Mesas de Merienda', 
+    title: 'Candy bar', 
     description: 'Snacks y dulces para reponer energías y disfrutar.'
   },
   { icon: <IconPinatas />, title: 'Piñatas', description: 'El momento más esperado lleno de sorpresas y alegría.' },

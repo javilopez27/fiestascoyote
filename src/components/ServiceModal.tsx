@@ -6,8 +6,6 @@ interface ServiceDetail {
   title: string;
   description?: string;
   badge?: string;
-  price?: string;
-  unit?: string; // ej. "/ niño" (solo para Talleres)
 }
 
 interface Service {
@@ -54,18 +52,6 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
             <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
               <div className="relative">
                 <img src={detail.img} alt={detail.title} className="w-full h-48 object-cover" />
-                {detail.price && (
-                  <span
-                    className="absolute bottom-3 right-3 px-3 py-1 rounded-full text-white text-sm font-semibold
-                               bg-gradient-to-r from-[#ff6b35] to-amber-500 shadow-lg leading-tight text-right"
-                    aria-label={`Precio ${detail.price}${detail.unit ? ' ' + detail.unit : ''}`}
-                  >
-                    <span className="block">{detail.price}</span>
-                    {detail.unit && (
-                      <span className="block text-[10px] font-medium opacity-90">{detail.unit}</span>
-                    )}
-                  </span>
-                )}
               </div>
 
               <div className="p-4">
