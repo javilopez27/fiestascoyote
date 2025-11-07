@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   kidsAge: string;
   kidsCount: string;
   eventDate: string;
@@ -18,6 +19,7 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
     kidsAge: '',
     kidsCount: '10',
     eventDate: '',
@@ -49,6 +51,7 @@ const Contact: React.FC = () => {
       replyto: formData.email,
       name: formData.name,
       email: formData.email,
+      phone: formData.phone,
       kidsAge: formData.kidsAge,
       kidsCount: formData.kidsCount,
       eventDate: formattedDate,
@@ -72,6 +75,7 @@ const Contact: React.FC = () => {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         kidsAge: '',
         kidsCount: '10',
         eventDate: '',
@@ -133,6 +137,20 @@ const Contact: React.FC = () => {
                   required
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
                   value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Tu Teléfono</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  placeholder="600 123 456"
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff6b35]"
+                  value={formData.phone}
                   onChange={handleChange}
                 />
               </div>
