@@ -1,4 +1,3 @@
-// ServiceModal.tsx
 import React from 'react';
 
 interface ServiceDetail {
@@ -21,6 +20,8 @@ interface ServiceModalProps {
 const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
   if (!service.details) return null;
 
+  const zoomOutImages = /tarta|tartas|taller|talleres/i.test(service.title); // ← aplicar a Tartas/Talleres
+
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4"
@@ -30,7 +31,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
       aria-labelledby="service-modal-title"
     >
       <div
-        className="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-8 relative animate-fade-in"
+        className="bg-white rounded-lg shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto p-6 md:p-8 relative animate-fade-in"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -50,8 +51,26 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {service.details.map((detail, index) => (
             <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-md">
-              <div className="relative">
-                <img src={detail.img} alt={detail.title} className="w-full h-48 object-cover" />
+              <div
+                className={
+                  zoomOutImages
+                    ? // Zoom-out: ver la imagen completa, sin recortes
+                      "relative flex items-center justify-center bg-white h-64 md:h-80 lg:h-96"
+                    : // Comportamiento anterior
+                      "relative h-48"
+                }
+              >
+                <img
+                  src={detail.img}
+                  alt={detail.title}
+                  loading="lazy"
+                  decoding="async"
+                  className={
+                    zoomOutImages
+                      ? "max-h-full max-w-full object-contain p-2"
+                      : "w-full h-full object-cover"
+                  }
+                />
               </div>
 
               <div className="p-4">
@@ -80,9 +99,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) => {
           from { opacity: 0; transform: scale(0.95); }
           to { opacity: 1; transform: scale(1); }
         }
-        .animate-fade-in {
-          animation: fade-in 0.3s ease-out forwards;
-        }
+        .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
       `}</style>
     </div>
   );

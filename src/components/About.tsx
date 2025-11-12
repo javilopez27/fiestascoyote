@@ -1,19 +1,25 @@
-
 import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white" lang="es">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800">Quiénes Somos</h2>
           <div className="w-24 h-1 bg-[#ff6b35] mx-auto mt-4"></div>
         </div>
+
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
-            <img src="https://i.imgur.com/aseXgdK.jpeg" alt="Equipo de Fiestas Coyote" className="rounded-lg shadow-xl w-full" />
+            <img
+              src="https://i.imgur.com/aseXgdK.jpeg"
+              alt="Equipo de Fiestas Coyote"
+              className="rounded-lg shadow-xl w-full"
+            />
           </div>
-          <div className="md:w-1/2 text-lg text-gray-600 space-y-4">
+
+          {/* Texto justificado + guiones automáticos + mejor legibilidad */}
+          <div className="md:w-1/2 text-lg text-gray-600 space-y-4 text-justify hyphens-auto leading-relaxed">
             <p>
               En Fiestas Coyote, sabemos que los recuerdos más preciados se forman en la infancia, rodeados de risas, juegos y amigos. Por ello hemos querido reflejar en nuestro nombre “Fiestas Coyote” los más de 12 años de amistad entre nuestro grupo de amigas.
             </p>
