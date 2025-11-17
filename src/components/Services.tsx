@@ -131,7 +131,7 @@ const servicesList = [
       { img: 'https://i.imgur.com/ODmgJOM.jpeg', title: 'Mousse choco y lacasitas', badge: CORDON },
       { img: 'https://i.imgur.com/LZxDb9x.jpeg', title: 'Queso con frambuesa',  badge: CORDON },
       { img: 'https://i.imgur.com/SPpBNSo.jpeg', title: 'Zanahoria',            badge: CORDON },
-      { img: 'https://i.imgur.com/O4q2O5R.jpeg', title: 'Manzana' },
+      { img: 'https://i.imgur.com/O4q2O5R.jpeg', title: 'Manzana',              badge: CORDON },
       { img: 'https://i.imgur.com/1oAIvsK.jpeg', title: 'Banoffe',            badge: CORDON },
     ]
   },
